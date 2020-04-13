@@ -8,7 +8,7 @@ Generate your own fantasy land!
 
 Click the button, or press `SPACE` or `ENTER` to get inspired.
 
-<!-- Click here to give it a go! -->
+[Click here to give it a go »](https://arturmroz.github.io/little-bits/fantasy-lands/)
 
 ## Sample outputs
 
@@ -20,8 +20,8 @@ A country made of fishing nets in the post apocalyptic wilderness, inhabited by 
 
 ## Known limitations
 
-Not optimised for mobile.
+Not optimised for mobile yet.
 
-## Credits
+## Acknowledgements
 
 Idea taken from _Mind performance hacks_ by _Ron Hale-Evans_.
