@@ -105,7 +105,7 @@ const position = [
     'right behind Tesco',
     'somewhere abroad',
     'in a parallel universe',
-    'In Australia',
+    'in Australia',
     'in the basement',
     'in the suburbs',
     'on the other side of the mirror',
@@ -180,7 +180,7 @@ const govt = [
     'puppies',
     'Lady Gaga',
     'over-tanned people',
-    'Duracell Bunny',
+    'the Duracell Bunny',
     'Cthulhu',
     'Putin in a kimono',
     'RoboGandhi',
@@ -217,11 +217,11 @@ const special = [
     'gladiator fights are broadcast on national TV',
     'disney princesses can\'t sing',
     'rap battles are the only way to settle things in courts',
-    'the shower can only be taken in wetsuits',
+    'shower can only be taken in wetsuits',
     'you have magical powers but only if you ate spinach when you were young',
     'yodeling lessons are compulsory',
     'dying is prohibited',
-    'internet is delivered by seagulls',
+    'the internet is delivered by seagulls',
     'not having a mustache is illegal',
     'everyone has a voice like Morgan Freeman',
     'wasp sting causes explosive diarrhea',
@@ -235,7 +235,7 @@ const special = [
     'sleeping bags are worn instead of shoes',
     'rain is caused by burning redheads as a sacrifice',
     'everyone listens to hip hop',
-    'every floor is an illuminated dicso dance floor',
+    'every floor is an illuminated disco dance floor',
     'archers use aggressive squirrels instead of arrows',
     'the main cause of death is constipation',
     'size doesn\'t matter',
@@ -256,7 +256,7 @@ function getRandom(array) {
 }
 
 function generateFantasyLand() {
-    const text = `A ${getRandom(type)} made of ${getRandom(material)} ${getRandom(position)}, \
+    const text = `A ${getRandom(type)} made of ${getRandom(material)}, ${getRandom(position)}, \
           inhabited by ${getRandom(inhabitants)}, ruled by ${getRandom(govt)}, where ${getRandom(special)}.`;
 
     maintext.innerHTML = text;

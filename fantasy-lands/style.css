@@ -6,10 +6,10 @@ html, body {
 }
 
 body {
-    background: #BE1836;
     color: #fff;
+    background: #be1836;
     text-align: center;
-    animation: rainbow 180s infinite linear;
+    animation: rainbow 200s infinite linear;
 }
 
 main {
@@ -20,28 +20,23 @@ main {
 }
 
 main div {
-    width: 100%;
+    max-width: 1200px;
     padding: 15px;
+    margin: 0 auto;
 }
 
 #maintext {
-    align-items: center;
-    cursor: default;
-    display: flex;
+    position: relative;
+    padding: 0;
+    margin-bottom: 1.2em;
+
     font-family: 'Libre Baskerville', serif;
-    font-size: 2em;
     font-style: normal;
     font-weight: normal;
-    justify-content: center;
+    font-size: 3vw;
+    font-size: clamp(22px, 3.5vw, 40px);
     line-height: 1.7;
-    margin: 0 auto;
-    margin-bottom: 1em;
-    max-width: 1000px;
-    min-height: 3em;
-    padding: 0;
-    position: relative;
     text-shadow: 0 0.06em rgba(0, 0, 0, 0.2);
-    text-transform: none;
 }
 
 #maintext.copyable {
@@ -49,20 +44,21 @@ main div {
 }
 
 #maintext::before {
-    background: #111;
-    border-radius: 5px;
-    content: attr(data-tip);
-    font: italic bold 14px serif;
+    position: absolute;
     left: 50%;
-    margin-left: -60px;
-    margin-top: -20px;
-    opacity: 0;
-    padding: 12px 14px;
-    position:absolute;
-    text-transform: lowercase;
     top: 50%;
-    transition:opacity 0.3s;
     z-index: 999;
+    transform: translate(-50%,-50%);
+    padding: 12px 15px;
+    border-radius: 5px;
+
+    content: attr(data-tip);
+    background: #111;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 15px;
+    text-transform: lowercase;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 #maintext.copied::before {
@@ -70,24 +66,24 @@ main div {
 }
 
 button {
-    padding: 0.5em 1.6em;
-    margin: 10px;
     position: relative;
     display: inline-block;
-    cursor: pointer;
-    outline: none;
+    padding: 0.5em 1.6em;
 
-    background: transparent;
-    color: #fff;
     border: 2px solid #fff;
     border-radius: 0.4em;
     box-shadow: 0px 6px #fff;
 
-    font: bold 1.8em 'Droid Serif', serif;
+    background: transparent;
+    color: #fff;
+
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
     text-transform: uppercase;
     letter-spacing: 0.4em;
     line-height: 1.8em;
+    cursor: pointer;
+    outline: none;
 }
 
 button:hover {
@@ -108,30 +104,23 @@ button:active {
     background-color: #222;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 480px) {
     button {
-        font-size: 1.5em;
+        width: 100%;
+        font-size: 1.4em;
         border-width: 1px;
         box-shadow: 0 4px #fff;
         top: 2px;
     }
 }
 
-@media only screen and (min-width: 1200px) {
-    #maintext {
-        font-size: 40px;
-        min-height: 3.5em;
-        max-width: 1200px;
-    }
-}
-
 @keyframes rainbow {
-    0%   { background-color: #BE1836; }
-    15%  { background-color: #F85931; }
-    30%  { background-color: #DDA92E; }
-    40%  { background-color: #A3A948; }
-    55%  { background-color: #00A2AF; }
-    70%  { background-color: #3D6ADB; }
-    85%  { background-color: #863AD8; }
-    100% { background-color: #BE1836; }
+    0%   { background-color: #be1836; }
+    15%  { background-color: #f85931; }
+    30%  { background-color: #dda92e; }
+    40%  { background-color: #a3a948; }
+    55%  { background-color: #00a2af; }
+    70%  { background-color: #3d6adb; }
+    85%  { background-color: #863ad8; }
+    100% { background-color: #be1836; }
 }

@@ -39,7 +39,7 @@ a {
 
     color: var(--fg-color2);
 
-    transition: all .3s;
+    transition: color .3s, padding .2s;
 }
 
 a:hover {
