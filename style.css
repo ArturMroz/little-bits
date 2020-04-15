@@ -1,50 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Montserrat:wght@900&display=swap');
 
 body {
-    --bg-color: #bbb;
-    --fg-color1: #fff;
-    --fg-color2: #222;
+  --bg-color: #bbb;
+  --fg-color1: #fff;
+  --fg-color2: #222;
 
-    background: var(--bg-color);
+  background: var(--bg-color);
 }
 
 main {
-    max-width: 1200px;
-    padding: 0 15px;
-    margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
 h1 {
-    padding-bottom: 0.55em;
-    border-bottom: 3px solid var(--fg-color1);
+  padding-bottom: 0.55em;
+  border-bottom: 3px solid var(--fg-color1);
 
-    color: var(--fg-color1);
+  color: var(--fg-color1);
 
-    font-family: 'Libre Baskerville', serif;
-    font-style: italic;
-    font-weight: 900;
-    font-size: 4vw;
-    font-size: clamp(40px, 4.5vw, 80px);
-    letter-spacing: 0.1em;
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 4vw;
+  font-size: clamp(40px, 4.5vw, 80px);
+  letter-spacing: 0.1em;
 }
 
 a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 3.5vw;
-    font-size: clamp(22px, 3vw, 72px);
-    line-height: 1.5em;
-    text-transform: uppercase;
-    text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 3.5vw;
+  font-size: clamp(22px, 3vw, 72px);
+  line-height: 1.5em;
+  text-transform: uppercase;
+  text-decoration: none;
 
-    color: var(--fg-color2);
+  color: var(--fg-color2);
 
-    transition: color .3s, padding .2s;
+  transition: color .3s, padding .2s;
 }
 
 a:hover {
-    padding-left: 0.2em;
-    color: var(--fg-color1);
+  padding-left: 0.15em;
+  color: var(--fg-color1);
 }
 
 ol {
@@ -68,4 +68,10 @@ ol li::before {
   font-style: italic;
   line-height: 1;
   color: var(--fg-color2);
+  transition: color .3s;
+}
+
+ol li:hover::before {
+  color: #dd0000;
+  /* content: "00."; */
 }
