@@ -130,7 +130,7 @@ const inhabitants = [
   'barbarians',
   'feminists',
   'hard working dwarves',
-  'very shy dwarfs',
+  'extremely shy dolphins',
   'poets',
   'malicious crabs',
   'suspiciously lively corpses',
@@ -183,10 +183,11 @@ const govt = [
   'Norse Gods',
   'a swarm of hornets',
   'natural selection',
+  'a sentient virus',
   'puppies',
-  'Lady Gaga',
   'over-tanned people',
   'the Duracell Bunny',
+  'Lady Gaga',
   'Cthulhu',
   'Putin in a kimono',
   'RoboGandhi',
@@ -255,7 +256,8 @@ const special = [
   'murder is legal on Wednesdays',
   'kittens grow on trees',
   'umbrellas are made of concrete',
-  'sawfishes and hammerhead sharks work at construction sites']
+  'sawfishes and hammerhead sharks work at construction sites'
+]
 
 const maintext = document.querySelector('#maintext');
 
