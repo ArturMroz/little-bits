@@ -6,8 +6,6 @@
 
 Micro apps built for fun and profit, too small to have their own repos.
 
-It's like speed painting, but for nerds!
-
 [Check out the index page here »](https://arturmroz.github.io/little-bits/)
 
 ## Projects

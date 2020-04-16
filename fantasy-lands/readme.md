@@ -20,10 +20,6 @@ A cemetery made of real mink fur in the basement, inhabited by old people, ruled
 
 A palace made of gold, in the basement, inhabited by miners, ruled by a cat with actual human-like opposable thumbs, where everyone listens to hip hop.
 
-## Known limitations
-
-Not optimised for mobile yet.
-
 ## Acknowledgements
 
 Inspired by tip #20 from _Mind performance hacks_ by _Ron Hale-Evans_.

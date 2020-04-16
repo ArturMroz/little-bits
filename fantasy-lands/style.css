@@ -33,7 +33,7 @@ main {
     font-style: normal;
     font-weight: normal;
     font-size: 3vw;
-    font-size: clamp(22px, 3.5vw, 40px);
+    font-size: clamp(20px, 3.5vw, 40px);
     line-height: 1.7;
     text-shadow: 0 0.06em rgba(0, 0, 0, 0.2);
 }
