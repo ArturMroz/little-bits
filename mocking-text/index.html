@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="description" content="Mocking text generator">
+    <meta name="keywords" content="mocking text generator, sarcasm, spongebob">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mocking text generator</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <main>
+      <textarea name="fromText" id="fromText" placeholder="your text goes here..." tabindex="1"></textarea>
+      <textarea name="toText" id="toText" placeholder="ImProVeD TexT WiLL aPPeaR HeRe..." tabindex="2"></textarea>
+    </main>
+
+    <script type="text/javascript">
+     const fromText = document.querySelector('#fromText')
+     const toText = document.querySelector('#toText')
+
+     fromText.addEventListener('keyup', e => {
+         toText.value = [...e.target.value]
+             .map(ch => Math.random() < 0.5 ? ch.toLowerCase() : ch.toUpperCase())
+             .join('')
+     })
+    </script>
+  </body>
+</html>

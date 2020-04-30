@@ -14,3 +14,6 @@ Micro apps built for fun and profit, too small to have their own repos.
    [code](https://github.com/ArturMroz/little-bits/tree/master/fantasy-lands) |
    [live demo](https://arturmroz.github.io/little-bits/fantasy-lands/)
 
+2. Mocking text generator |
+   [code](https://github.com/ArturMroz/little-bits/tree/master/mocking-text) |
+   [live demo](https://arturmroz.github.io/little-bits/mocking-text/)
