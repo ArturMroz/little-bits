@@ -26,10 +26,10 @@ textarea {
     border-radius: 10px;
     box-shadow: 0 0 0 12px rgba(0, 0, 0, 0.1);
 
-    font-size: 40px;
+    font-size: 30px;
     font-size: clamp(20px, 2vw, 35px);
 
     color: #222;
-    opacity: .9;
+    opacity: .88;
     resize: none;
 }
