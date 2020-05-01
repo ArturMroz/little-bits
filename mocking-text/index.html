@@ -9,22 +9,61 @@
 
     <title>Mocking text generator</title>
 
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+     html, body {
+         height: 100%;
+         margin: 0;
+     }
+
+     body {
+         background-color: #4b5d61;
+         background-image: url("spongebob1600.jpg");
+         background-size: cover;
+     }
+
+     main {
+         display: flex;
+         flex-direction: column;
+         height: calc(100% - 35px);
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 15px;
+     }
+
+     textarea {
+         flex: 1;
+         margin: 1.5rem;
+         padding: 1.5rem;
+         border: none;
+         border-radius: 10px;
+         box-shadow: 0 0 0 12px rgba(0, 0, 0, 0.1);
+         font-size: clamp(15px, 2vw, 30px);
+         color: #222;
+         opacity: .85;
+         resize: none;
+     }
+    </style>
   </head>
+
   <body>
     <main>
-      <textarea name="fromText" id="fromText" placeholder="your text goes here..." tabindex="1" autofocus></textarea>
-      <textarea name="toText" id="toText" placeholder="ImProVeD TexT WiLL aPPeaR HeRe..." tabindex="2"></textarea>
+      <textarea id="fromText" placeholder="your text goes here..." autofocus></textarea>
+      <textarea id="toText" placeholder="ImProVeD TexT WiLL aPPeaR HeRe..."></textarea>
     </main>
 
     <script type="text/javascript">
      const fromText = document.querySelector('#fromText')
      const toText = document.querySelector('#toText')
 
-     fromText.addEventListener('keyup', e => {
-         toText.value = [...e.target.value]
+     const mock = text =>
+         [...text]
              .map(ch => Math.random() < 0.5 ? ch.toLowerCase() : ch.toUpperCase())
              .join('')
+
+     fromText.addEventListener('keyup', e => {
+         const mockedText = mock(e.target.value)
+         // 2nd pass - find 5 or more consecutive same case chars and randomize again
+         toText.value = mockedText.replace(/[a-z ]{5,}|[A-Z ]{5,}/g, match => mock(match))
      })
     </script>
   </body>
