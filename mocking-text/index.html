@@ -24,7 +24,7 @@
      main {
          display: flex;
          flex-direction: column;
-         height: calc(100% - 35px);
+         height: calc(100% - 30px);
          max-width: 1200px;
          margin: 0 auto;
          padding: 15px;
@@ -32,12 +32,12 @@
 
      textarea {
          flex: 1;
-         margin: 1.5rem;
-         padding: 1.5rem;
          border: none;
+         padding: clamp(12px, 2vw, 28px);
+         margin: clamp(10px, 2vw, 28px);
          border-radius: 10px;
-         box-shadow: 0 0 0 12px rgba(0, 0, 0, 0.1);
-         font-size: clamp(15px, 2vw, 30px);
+         box-shadow: 0 0 0 clamp(5px, 1.5vw, 12px) rgba(0, 0, 0, 0.1);
+         font-size: clamp(14px, 2vw, 30px);
          color: #222;
          opacity: .85;
          resize: none;
