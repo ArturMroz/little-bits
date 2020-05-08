@@ -17,7 +17,7 @@
 
      body {
          background-color: #4b5d61;
-         background-image: url("spongebob1600.jpg");
+         background-image: url("spongebob1200.jpg");
          background-size: cover;
      }
 
@@ -42,13 +42,17 @@
          opacity: .85;
          resize: none;
      }
+
+     #toText {
+         cursor: pointer;
+     }
     </style>
   </head>
 
   <body>
     <main>
       <textarea id="fromText" placeholder="your text goes here..." autofocus></textarea>
-      <textarea id="toText" placeholder="ImProVeD TexT WiLL aPPeaR HeRe..."></textarea>
+      <textarea id="toText" placeholder="click here to copy YoUr ImProVeD Text..." title="click here to copy" readonly></textarea>
     </main>
 
     <script type="text/javascript">
@@ -60,11 +64,22 @@
              .map(ch => Math.random() < 0.5 ? ch.toLowerCase() : ch.toUpperCase())
              .join('')
 
-     fromText.addEventListener('keyup', e => {
-         const mockedText = mock(e.target.value)
-         // 2nd pass - find 5 or more consecutive same case chars and randomize again
+     fromText.addEventListener('keyup', () => {
+         const mockedText = mock(fromText.value)
+         // 2nd pass - find 5 or more consecutive same-cased chars and randomize again
          toText.value = mockedText.replace(/[a-z ]{5,}|[A-Z ]{5,}/g, match => mock(match))
      })
+
+     toText.addEventListener('click', () => {
+         toText.select()
+
+         try {
+             document.execCommand('copy');
+         }
+         catch {
+             console.log('Oops, unable to copy');
+         }
+     });
     </script>
   </body>
 </html>
