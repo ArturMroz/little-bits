@@ -43,7 +43,7 @@
          resize: none;
      }
 
-     #toText {
+     #to-text {
          cursor: pointer;
      }
     </style>
@@ -51,13 +51,13 @@
 
   <body>
     <main>
-      <textarea id="fromText" placeholder="your text goes here..." autofocus></textarea>
-      <textarea id="toText" placeholder="click here to copy YoUr ImProVeD Text..." title="click here to copy" readonly></textarea>
+      <textarea id="from-text" placeholder="your text goes here..." autofocus></textarea>
+      <textarea id="to-text" placeholder="click here to copy YoUr ImProVeD Text..." title="click here to copy" readonly></textarea>
     </main>
 
     <script type="text/javascript">
-     const fromText = document.querySelector('#fromText')
-     const toText = document.querySelector('#toText')
+     const fromText = document.querySelector('#from-text')
+     const toText = document.querySelector('#to-text')
 
      const mock = text =>
          [...text]
@@ -72,14 +72,8 @@
 
      toText.addEventListener('click', () => {
          toText.select()
-
-         try {
-             document.execCommand('copy');
-         }
-         catch {
-             console.log('Oops, unable to copy');
-         }
-     });
+         document.execCommand('copy')
+     })
     </script>
   </body>
 </html>
