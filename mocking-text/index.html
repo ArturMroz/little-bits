@@ -59,15 +59,13 @@
      const fromText = document.querySelector('#from-text')
      const toText = document.querySelector('#to-text')
 
-     const mock = text =>
-         [...text]
-             .map(ch => Math.random() < 0.5 ? ch.toLowerCase() : ch.toUpperCase())
-             .join('')
-
      fromText.addEventListener('keyup', () => {
-         const mockedText = mock(fromText.value)
-         // 2nd pass - find 5 or more consecutive same-cased chars and randomize again
-         toText.value = mockedText.replace(/[a-z ]{5,}|[A-Z ]{5,}/g, match => mock(match))
+         const mockedText =
+             [...fromText.value]
+                 .map(ch => Math.random() < 0.5 ? ch.toLowerCase() : ch.toUpperCase())
+                 .join('')
+
+         toText.value = mockedText
      })
 
      toText.addEventListener('click', () => {
