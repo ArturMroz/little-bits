@@ -42,8 +42,6 @@
   </head>
   <body>
     <main>
-      <!-- <h1>hai·ku bu·ddy</h1> -->
-      <!-- <h1>俳句バディ</h1> -->
       <div id='counter'></div>
       <textarea id='poetry' rows='10'></textarea>
     </main>
@@ -66,8 +64,9 @@
          }
      }
 
-     function countSyllables(word) {
-         const matches = word.toLowerCase().match(/[aeiouy]{1,2}/g)
+     function countSyllables(sentence) {
+         const syllableRegex = /[aiouy]+e*|e(?!d\b|ly)\w|[td]ed|le\b|\b\w{1,2}e\b/gi
+         const matches = sentence.match(syllableRegex)
 
          if (matches === null) return 0
 
