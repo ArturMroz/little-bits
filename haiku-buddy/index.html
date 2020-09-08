@@ -9,6 +9,8 @@
 
     <title>Haiku buddy</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
+
     <style type="text/css">
      html, body {
          height: 100%;
@@ -31,7 +33,6 @@
          margin-top: 3px;
          width: 25px;
          vertical-align: top;
-         font-weight: bold;
      }
 
      #counter, #poetry {
@@ -44,11 +45,30 @@
     <main>
       <div id='counter'></div>
       <textarea id='poetry' rows='10'></textarea>
+      <div>
+        <canvas id="canvas" width="600" height="430"></canvas>
+      </div>
     </main>
 
     <script>
      const poetry = document.querySelector("#poetry")
      const counter = document.querySelector("#counter")
+     const canvas = document.querySelector("#canvas")
+     const context = canvas.getContext("2d")
+
+     const imageObj = new Image()
+
+     // imageObj.src = "plant.jpg"
+     // context.fillStyle = "#223d2a"
+
+     imageObj.src = "koi.jpg"
+     context.fillStyle = "#f1ecf2"
+
+     imageObj.onload = function(){
+         context.drawImage(imageObj, 0, 0)
+         context.font = "24pt 'Long Cang'"
+         updateCanvas()
+     }
 
      poetry.addEventListener('keyup', updateCounter)
 
@@ -59,8 +79,16 @@
                    .map(countSyllables)
                    .join('<br>')
 
-         if (poetry.clientHeight < counter.clientHeight) {
-             poetry.style.height = counter.clientHeight + 'px'
+         updateCanvas()
+     }
+
+     function updateCanvas() {
+         context.drawImage(imageObj, 0, 0)
+         let y = 120
+
+         for (const line of poetry.value.split('\n')) {
+             context.fillText(line, 50, y)
+             y += 34
          }
      }
 
