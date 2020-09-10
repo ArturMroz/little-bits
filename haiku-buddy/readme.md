@@ -17,4 +17,7 @@ It also generates an image with your text on it so you can easily share your exq
 
 ### Credits
 
-Images from [Unsplash](https://unsplash.com) ([koi fish](https://unsplash.com/photos/vXid97obEy8), [plant](https://unsplash.com/photos/hDyO6rr3kqk))
+Images from [Unsplash](https://unsplash.com) ([fish](https://unsplash.com/photos/vXid97obEy8), [plant](https://unsplash.com/photos/hDyO6rr3kqk), 
+[clock](https://unsplash.com/photos/dhZtNlvNE8M),
+[sneaks](https://unsplash.com/photos/KPydzVyWfqg),
+[desk](https://unsplash.com/photos/VieM9BdZKFo))

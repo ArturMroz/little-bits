@@ -122,12 +122,27 @@
          const urlParams = new URLSearchParams(window.location.search)
          const themeParam = urlParams.get('theme')
 
-         if (themeParam === 'light') {
-             poemBgImg.src = 'plant.jpg'
-             context.fillStyle = '#223d2a'
-         } else {
-             poemBgImg.src = 'koi.jpg'
-             context.fillStyle = '#f1ecf2'
+         switch (themeParam) {
+             case 'light':
+             case 'plant':
+                 poemBgImg.src = 'plant.jpg'
+                 context.fillStyle = '#223d2a'
+                 break
+             case 'clock':
+                 poemBgImg.src = 'clock.jpg'
+                 context.fillStyle = '#47423c'
+                 break
+             case 'desk':
+                 poemBgImg.src = 'desk.jpg'
+                 context.fillStyle = '#846e32'
+                 break
+             case 'sneaks':
+                 poemBgImg.src = 'sneaks.jpg'
+                 context.fillStyle = '#edf6f5'
+                 break
+             default:
+                 poemBgImg.src = 'koi.jpg'
+                 context.fillStyle = '#f1ecf2'
          }
      }
     </script>
