@@ -19,5 +19,6 @@ It also generates an image with your text on it so you can easily share your exq
 
 Images from [Unsplash](https://unsplash.com) ([fish](https://unsplash.com/photos/vXid97obEy8), [plant](https://unsplash.com/photos/hDyO6rr3kqk), 
 [clock](https://unsplash.com/photos/dhZtNlvNE8M),
-[sneaks](https://unsplash.com/photos/KPydzVyWfqg),
-[desk](https://unsplash.com/photos/VieM9BdZKFo))
+[crosses](https://unsplash.com/photos/4xbLsi16Bw4),
+[exit](https://unsplash.com/photos/Jv0TBnjzYNM),
+[bears](https://unsplash.com/photos/uB9TMm7R0So))
