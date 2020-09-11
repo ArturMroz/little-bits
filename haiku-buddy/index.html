@@ -29,7 +29,7 @@
      }
 
      #poetry {
-         min-width: 500px;
+         min-width: 450px;
          padding: 5px;
          resize: none;
      }
@@ -45,7 +45,7 @@
 
      #counter, #poetry {
          font-family: sans-serif;
-         font-size: 1.2em;
+         font-size: 1.1em;
      }
 
      .button {
@@ -62,18 +62,39 @@
      .button:hover {
          background: #c02010;
      }
+
+     #bottom-bar {
+         display: inline;
+     }
+
+     #theme-select {
+         margin-right: 80px;
+     }
+
+     label {
+         font-family: sans-serif;
+         color: #333;
+     }
+
+     select {
+         padding: 5px 10px;
+     }
     </style>
   </head>
   <body>
     <main>
       <div>
-        <div id='counter'></div>
-        <textarea id='poetry' rows='8' autofocus></textarea>
+        <div id="counter"></div>
+        <textarea id="poetry" rows="8" autofocus></textarea>
       </div>
 
-      <canvas id='canvas' width='600' height='420'></canvas>
+      <canvas id="canvas" width="600" height="420"></canvas>
 
-      <a id='btn-download' class='button' href='#' download='haiku.png'>Download your art</a>
+      <div id='bottom-bar'>
+        <label for="theme-select">Theme: </label>
+        <select id="theme-select"></select>
+        <a id="download-btn" class="button" href="#" download="haiku.png">Download your art</a>
+      </div>
     </main>
 
     <script>
@@ -82,19 +103,51 @@
 
      const canvas = document.querySelector('#canvas')
      const context = canvas.getContext('2d')
-     const poemBgImg = new Image()
+     context.font = '24pt "Long Cang"'
+
      const [x, y, yOffset] = [50, 100, 35]
+     const poemBgImg = new Image()
 
      poemBgImg.onload = updateStateOfAffairs
      poetry.addEventListener('keyup', updateStateOfAffairs)
 
-     const button = document.querySelector('#btn-download')
-     button.addEventListener('click', () => {
-         var dataURL = canvas.toDataURL('image/png');
-         button.href = dataURL;
-     });
+     const downloadButton = document.querySelector('#download-btn')
+     downloadButton.addEventListener('click', () => {
+         const dataURL = canvas.toDataURL('image/png')
+         downloadButton.href = dataURL
+     })
+
+     const themes = {
+         'koi': { src: 'koi.jpg', color: '#f1ecf2' },
+         'plant': { src: 'plant.jpg', color: '#223d2a' },
+         'clock': { src: 'clock.jpg', color: '#47423c' },
+     }
+
+     setUpThemeSelect()
 
      setTheme()
+
+     function setTheme(themeName) {
+         const { src, color } = themes[themeName] || themes['koi']
+         poemBgImg.src = src
+         context.fillStyle = color
+     }
+
+     function setUpThemeSelect() {
+         const themeSelect = document.querySelector('#theme-select')
+
+         for (const theme in themes) {
+             const option = document.createElement('option')
+             option.value = theme
+             option.textContent = theme
+             themeSelect.appendChild(option)
+         }
+
+         themeSelect.addEventListener('change', e => {
+             const themeName = e.target.value
+             setTheme(themeName)
+         })
+     }
 
      function updateStateOfAffairs() {
          const artByLines = poetry.value.split('\n')
@@ -113,37 +166,6 @@
          if (matches === null) return 0
 
          return matches.length
-     }
-
-     function setTheme() {
-         context.font = "24pt 'Long Cang'"
-
-         // for now, theme is being read from the query param
-         const urlParams = new URLSearchParams(window.location.search)
-         const themeParam = urlParams.get('theme')
-
-         switch (themeParam) {
-             case 'light':
-             case 'plant':
-                 poemBgImg.src = 'plant.jpg'
-                 context.fillStyle = '#223d2a'
-                 break
-             case 'clock':
-                 poemBgImg.src = 'clock.jpg'
-                 context.fillStyle = '#47423c'
-                 break
-             case 'desk':
-                 poemBgImg.src = 'desk.jpg'
-                 context.fillStyle = '#846e32'
-                 break
-             case 'sneaks':
-                 poemBgImg.src = 'sneaks.jpg'
-                 context.fillStyle = '#edf6f5'
-                 break
-             default:
-                 poemBgImg.src = 'koi.jpg'
-                 context.fillStyle = '#f1ecf2'
-         }
      }
     </script>
   </body>
