@@ -21,4 +21,6 @@ Images from [Unsplash](https://unsplash.com) ([fish](https://unsplash.com/photos
 [clock](https://unsplash.com/photos/dhZtNlvNE8M),
 [crosses](https://unsplash.com/photos/4xbLsi16Bw4),
 [exit](https://unsplash.com/photos/Jv0TBnjzYNM),
+[kitty](https://unsplash.com/photos/wg6tsOBbGb0),
+[doge](https://unsplash.com/photos/HpVgq2BIjbw),
 [bears](https://unsplash.com/photos/uB9TMm7R0So))

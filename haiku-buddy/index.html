@@ -124,9 +124,11 @@
          'bears': { src: 'bears.jpg', color: '#271d1c' },
          'rip': { src: 'rip.jpg', color: '#fcfaff' },
          'exit': { src: 'exit.jpg', color: '#fcfcff' },
+         'doge': { src: 'doge.jpg', color: '#904e14' },
+         'kitty': { src: 'kitty.jpg', color: '#79740e' },
      }
 
-     setUpThemeSelect()
+     setupThemeSelect()
 
      setTheme()
 
@@ -136,7 +138,7 @@
          context.fillStyle = color
      }
 
-     function setUpThemeSelect() {
+     function setupThemeSelect() {
          const themeSelect = document.querySelector('#theme-select')
 
          for (const theme in themes) {
