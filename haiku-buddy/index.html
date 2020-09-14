@@ -20,7 +20,7 @@
      main {
          margin: 0 auto;
          height: 100%;
-         max-width: 800px;
+         max-width: 650px;
          display: flex;
          flex-direction: column;
          align-items: center;
@@ -93,7 +93,7 @@
       <div id='bottom-bar'>
         <label for="theme-select">Theme: </label>
         <select id="theme-select"></select>
-        <a id="download-btn" class="button" href="#" download="haiku.png">Download your art</a>
+        <a id="download-btn" class="button" href="#" download="haiku.png">Download your art » </a>
       </div>
     </main>
 
@@ -118,12 +118,14 @@
      })
 
      const themes = {
+         'plant': { src: 'plant.jpg', color: '#27562c' },
          'koi': { src: 'koi.jpg', color: '#f1ecf2' },
-         'plant': { src: 'plant.jpg', color: '#223d2a' },
          'clock': { src: 'clock.jpg', color: '#47423c' },
          'bears': { src: 'bears.jpg', color: '#271d1c' },
          'rip': { src: 'rip.jpg', color: '#fcfaff' },
          'exit': { src: 'exit.jpg', color: '#fcfcff' },
+         'rope': { src: 'rope.jpg', color: 'white' },
+         'hand': { src: 'hand.jpg', color: '#0b0602' },
          'doge': { src: 'doge.jpg', color: '#904e14' },
          'kitty': { src: 'kitty.jpg', color: '#79740e' },
      }
@@ -133,7 +135,7 @@
      setTheme()
 
      function setTheme(themeName) {
-         const { src, color } = themes[themeName] || themes['koi']
+         const { src, color } = themes[themeName] || themes['plant']
          poemBgImg.src = src
          context.fillStyle = color
      }
