@@ -12,88 +12,117 @@
     <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
 
     <style type="text/css">
+     :root {
+         --accent: #bada55;
+     }
+
      html, body {
          height: 100%;
          margin: 0;
      }
 
      main {
-         margin: 0 auto;
          height: 100%;
-         max-width: 650px;
+         display: flex;
+     }
+
+     .left-wrapper {
+         display: flex;
+         flex: 5;
+         justify-content: flex-end;
+         align-items: center;
+         background: var(--accent);
+     }
+
+     .right-wrapper {
+         display: flex;
+         flex: 6;
+         align-items: center;
+         background: white;
+     }
+
+     .left {
+         background: white;
+         height: 420px;
+         padding: 40px;
+         box-sizing: border-box;
          display: flex;
          flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         gap: 50px;
+         align-items: flex-end;
+         justify-content: space-between;
      }
 
      #poetry {
-         min-width: 450px;
-         padding: 5px;
+         padding: 10px 15px;
+         width: 380px;
+         background: #fafafa;
+         border: 1px solid #ddd;
+         color: #111;
          resize: none;
      }
 
      #counter {
          display: inline-block;
          margin: 0;
-         margin-top: 8px;
-         color: #666;
+         margin-top: 12px;
          width: 22px;
          vertical-align: top;
+         color: #555;
      }
 
-     #counter, #poetry {
+     #counter, #poetry, label {
          font-family: sans-serif;
-         font-size: 1.1em;
+         font-size: 1.0em;
      }
 
      .button {
          padding: 15px 25px;
-         background: #111;
-         color: white;
+         background: #d3d3d3;
+         color: #222;
          text-transform: uppercase;
          text-decoration: none;
          font-family: sans-serif;
-         font-weight: bold;
          transition: .3s background;
      }
 
      .button:hover {
-         background: #c02010;
-     }
-
-     #bottom-bar {
-         display: inline;
-     }
-
-     #theme-select {
-         margin-right: 80px;
+         background: #aaa;
      }
 
      label {
          font-family: sans-serif;
-         color: #333;
+         color: #444;
      }
 
      select {
-         padding: 5px 10px;
+         padding: 12px 15px;
+         border: 1px solid #ddd;
+         background: #fafafa;
+         color: #111;
+         -webkit-appearance:none;
+         -moz-appearance:none;
+         appearance:none;
      }
     </style>
   </head>
   <body>
     <main>
-      <div>
-        <div id="counter"></div>
-        <textarea id="poetry" rows="8" autofocus></textarea>
+      <div class="left-wrapper">
+        <div class="left">
+          <div>
+            <div id="counter"></div>
+            <textarea id="poetry" rows="8" autofocus></textarea>
+          </div>
+          <div>
+            <label for="theme-select">Theme: </label>
+            <select id="theme-select"></select>
+          </div>
+          <a id="download-btn" class="button" href="#" download="haiku.png">Download your art » </a>
+        </div>
       </div>
 
-      <canvas id="canvas" width="600" height="420"></canvas>
-
-      <div id='bottom-bar'>
-        <label for="theme-select">Theme: </label>
-        <select id="theme-select"></select>
-        <a id="download-btn" class="button" href="#" download="haiku.png">Download your art » </a>
+      <div class="right-wrapper">
+        <canvas id="canvas" width="600" height="420"></canvas>
       </div>
     </main>
 
@@ -105,7 +134,7 @@
      const context = canvas.getContext('2d')
      context.font = '24pt "Long Cang"'
 
-     const [x, y, yOffset] = [50, 100, 35]
+     const [x, y, yOffset] = [50, 90, 35]
      const poemBgImg = new Image()
 
      poemBgImg.onload = updateStateOfAffairs
@@ -119,13 +148,13 @@
 
      const themes = {
          'plant': { src: 'plant.jpg', color: '#27562c' },
-         'koi': { src: 'koi.jpg', color: '#f1ecf2' },
-         'clock': { src: 'clock.jpg', color: '#47423c' },
+         'koi': { src: 'koi.jpg', color: '#f1ecf2', accent: '#bf1021' },
+         'clock': { src: 'clock.jpg', color: '#47423c', accent: '#cbebe6' },
          'bears': { src: 'bears.jpg', color: '#271d1c' },
-         'rip': { src: 'rip.jpg', color: '#fcfaff' },
-         'exit': { src: 'exit.jpg', color: '#fcfcff' },
-         'rope': { src: 'rope.jpg', color: 'white' },
-         'hand': { src: 'hand.jpg', color: '#0b0602' },
+         'rip': { src: 'rip.jpg', color: '#fcfaff', accent: '#583762' },
+         'exit': { src: 'exit.jpg', color: '#fcfcff', accent: '#9f0213' },
+         'rope': { src: 'rope.jpg', color: 'white', accent: '#725943' },
+         'hand': { src: 'hand.jpg', color: '#211b25' },
          'doge': { src: 'doge.jpg', color: '#904e14' },
          'kitty': { src: 'kitty.jpg', color: '#79740e' },
      }
@@ -135,9 +164,11 @@
      setTheme()
 
      function setTheme(themeName) {
-         const { src, color } = themes[themeName] || themes['plant']
+         const { src, color, accent } = themes[themeName] || themes['plant']
+
          poemBgImg.src = src
          context.fillStyle = color
+         document.documentElement.style.setProperty('--accent', accent || color)
      }
 
      function setupThemeSelect() {
@@ -167,7 +198,7 @@
      }
 
      function countSyllables(sentence) {
-         const syllableRegex = /[aiouy]+e*|e(?!d\b|ly)\w|[td]ed|le\b|\b\w{1,2}e\b/gi
+         const syllableRegex = /[aiouy]+e*|e(?!d\b|ly)\w|[td]ed|(le|tre)\b|\b\w{1,2}e\b/gi
          const matches = sentence.match(syllableRegex)
 
          if (matches === null) return 0
