@@ -16,14 +16,42 @@
          --accent: #bada55;
      }
 
-     html, body {
+     html {
          height: 100%;
-         margin: 0;
      }
 
-     main {
+     body {
          height: 100%;
+         margin: 0;
          display: flex;
+     }
+
+     .right-wrapper {
+         display: flex;
+         flex: 6;
+         align-items: center;
+         background: white;
+     }
+
+     .header {
+         height: 70px;
+         padding: 0 0 30px 32px;
+         box-sizing: border-box;
+         display: flex;
+         align-items: center;
+     }
+
+     .logo {
+         flex: 1;
+         font-family: 'Long Cang';
+         font-size: 50px;
+         color: #333;
+
+     }
+
+     .logo .dot {
+         color: var(--accent);
+         margin: 0 2px;
      }
 
      .left-wrapper {
@@ -34,31 +62,35 @@
          background: var(--accent);
      }
 
-     .right-wrapper {
+     .left {
          display: flex;
-         flex: 6;
-         align-items: center;
+         gap: 40px;
+         flex-direction: column;
+         justify-content: space-between;
+         height: 420px;
+         padding: 40px;
+         margin-top: 65px;
+         box-sizing: border-box;
          background: white;
      }
 
-     .left {
-         background: white;
-         height: 420px;
-         padding: 40px;
-         box-sizing: border-box;
-         display: flex;
-         flex-direction: column;
-         align-items: flex-end;
-         justify-content: space-between;
+     .poetry-wrapper {
+         flex: 1;
      }
 
      #poetry {
          padding: 10px 15px;
-         width: 380px;
+         width: 400px;
+         height: 100%;
          background: #fafafa;
          border: 1px solid #ddd;
          color: #111;
          resize: none;
+         box-sizing: border-box;
+     }
+
+     #poetry:focus {
+         border: 1px solid #aaa;
      }
 
      #counter {
@@ -81,8 +113,9 @@
          color: #222;
          text-transform: uppercase;
          text-decoration: none;
+         text-align: center;
          font-family: sans-serif;
-         transition: .3s background;
+         transition: .2s background;
      }
 
      .button:hover {
@@ -91,40 +124,71 @@
 
      label {
          font-family: sans-serif;
-         color: #444;
+         color: #555;
      }
 
      select {
-         padding: 12px 15px;
+         padding: 6px 20px 6px 12px;
+         margin-left: 6px;
          border: 1px solid #ddd;
          background: #fafafa;
          color: #111;
-         -webkit-appearance:none;
-         -moz-appearance:none;
-         appearance:none;
+         -webkit-appearance: none;
+         -moz-appearance: none;
+         appearance: none;
+     }
+
+     select:hover {
+         background: #eee;
+         border: 1px solid #ccc;
+         cursor: pointer;
+     }
+
+     .select-div {
+         position: relative;
+         margin-top: 12px;
+     }
+
+     .select-div::after {
+         content: "";
+         position: absolute;
+         right: 10px;
+         top: 45%;
+         border-top-style: solid;
+         border-top-width: 4px;
+         border-right: 4px solid transparent;
+         border-bottom: 0 solid transparent;
+         border-left: 4px solid transparent;
      }
     </style>
   </head>
   <body>
-    <main>
-      <div class="left-wrapper">
-        <div class="left">
-          <div>
-            <div id="counter"></div>
-            <textarea id="poetry" rows="8" autofocus></textarea>
-          </div>
-          <div>
-            <label for="theme-select">Theme: </label>
+    <div class="left-wrapper">
+      <div class="left">
+        <div class="poetry-wrapper">
+          <div id="counter"></div>
+          <textarea id="poetry" autofocus></textarea>
+        </div>
+        <a id="download-btn" class="button" href="#" download="haiku.png">Download your art » </a>
+      </div>
+    </div>
+
+    <div class="right-wrapper">
+      <div>
+        <div class="header">
+          <span class="logo">
+            Hai<span class="dot">·</span>ku Bud<span class="dot">·</span>dy
+          </span>
+
+          <div class="select-div">
+            <label for="theme-select">theme</label>
             <select id="theme-select"></select>
           </div>
-          <a id="download-btn" class="button" href="#" download="haiku.png">Download your art » </a>
         </div>
-      </div>
 
-      <div class="right-wrapper">
         <canvas id="canvas" width="600" height="420"></canvas>
       </div>
-    </main>
+    </div>
 
     <script>
      const poetry = document.querySelector('#poetry')
@@ -147,8 +211,8 @@
      })
 
      const themes = {
-         'plant': { src: 'plant.jpg', color: '#27562c' },
          'koi': { src: 'koi.jpg', color: '#f1ecf2', accent: '#bf1021' },
+         'plant': { src: 'plant.jpg', color: '#27562c' },
          'clock': { src: 'clock.jpg', color: '#47423c', accent: '#cbebe6' },
          'bears': { src: 'bears.jpg', color: '#271d1c' },
          'rip': { src: 'rip.jpg', color: '#fcfaff', accent: '#583762' },
@@ -164,7 +228,7 @@
      setTheme()
 
      function setTheme(themeName) {
-         const { src, color, accent } = themes[themeName] || themes['plant']
+         const { src, color, accent } = themes[themeName] || themes['koi']
 
          poemBgImg.src = src
          context.fillStyle = color
