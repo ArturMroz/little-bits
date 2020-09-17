@@ -7,13 +7,13 @@
     <meta name="keywords" content="haiku, poetry, syllables counter, fine art">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
-    <title>Haiku buddy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
+    <title>Haiku buddy</title>
 
     <style type="text/css">
      :root {
-         --accent: #bada55;
+         --accent: white;
      }
 
      html {
@@ -24,6 +24,10 @@
          height: 100%;
          margin: 0;
          display: flex;
+     }
+
+     body * {
+         font-family: 'Montserrat', 'Open Sans', sans-serif;
      }
 
      .right-wrapper {
@@ -43,15 +47,16 @@
 
      .logo {
          flex: 1;
-         font-family: 'Long Cang';
-         font-size: 50px;
+         text-transform: lowercase;
+         font-weight: 500;
+         font-size: 36px;
          color: #333;
 
      }
 
      .logo .dot {
          color: var(--accent);
-         margin: 0 2px;
+         margin: 0 3px;
      }
 
      .left-wrapper {
@@ -60,6 +65,7 @@
          justify-content: flex-end;
          align-items: center;
          background: var(--accent);
+         transition: .4s background;
      }
 
      .left {
@@ -69,7 +75,7 @@
          justify-content: space-between;
          height: 420px;
          padding: 40px;
-         margin-top: 65px;
+         margin-top: 66px;
          box-sizing: border-box;
          background: white;
      }
@@ -80,7 +86,7 @@
 
      #poetry {
          padding: 10px 15px;
-         width: 400px;
+         width: 420px;
          height: 100%;
          background: #fafafa;
          border: 1px solid #ddd;
@@ -102,9 +108,8 @@
          color: #555;
      }
 
-     #counter, #poetry, label {
-         font-family: sans-serif;
-         font-size: 1.0em;
+     #counter, #poetry {
+         font-size: 18px;
      }
 
      .button {
@@ -113,18 +118,21 @@
          color: #222;
          text-transform: uppercase;
          text-decoration: none;
+         font-weight: 500;
+         font-size: 18px;
          text-align: center;
-         font-family: sans-serif;
          transition: .2s background;
+         letter-spacing: 1px;
      }
 
      .button:hover {
          background: #aaa;
+         color: #111;
      }
 
      label {
-         font-family: sans-serif;
          color: #555;
+         font-size: 16px;
      }
 
      select {
@@ -146,7 +154,7 @@
 
      .select-div {
          position: relative;
-         margin-top: 12px;
+         margin-top: 8px;
      }
 
      .select-div::after {
@@ -206,8 +214,7 @@
 
      const downloadButton = document.querySelector('#download-btn')
      downloadButton.addEventListener('click', () => {
-         const dataURL = canvas.toDataURL('image/png')
-         downloadButton.href = dataURL
+         downloadButton.href = canvas.toDataURL('image/png')
      })
 
      const themes = {
