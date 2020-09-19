@@ -47,12 +47,9 @@
 
      .logo {
          flex: 1;
-         text-transform: lowercase;
          letter-spacing: 1px;
-         font-weight: 400;
          font-size: 36px;
          color: #333;
-
      }
 
      .logo .dot {
@@ -82,6 +79,7 @@
      }
 
      .poetry-wrapper {
+         display: flex;
          flex: 1;
      }
 
@@ -101,7 +99,6 @@
      }
 
      #counter {
-         display: inline-block;
          margin: 0;
          margin-top: 12px;
          width: 22px;
@@ -180,7 +177,7 @@
       <div class="left">
         <div class="poetry-wrapper">
           <div id="counter"></div>
-          <textarea id="poetry" autofocus></textarea>
+          <textarea id="poetry" placeholder="start crafting your haiku here and the syllables will be counted for you" autofocus></textarea>
         </div>
         <a id="download-btn" class="button" href="#" download="haiku.png">
           <img src="img/download.png">
@@ -193,7 +190,7 @@
       <div>
         <div class="header">
           <span class="logo">
-            Hai<span class="dot">·</span>ku Bud<span class="dot">·</span>dy
+            hai<span class="dot">·</span>ku bud<span class="dot">·</span>dy
           </span>
 
           <div class="select-div">
