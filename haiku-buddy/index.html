@@ -13,7 +13,7 @@
 
     <style type="text/css">
      :root {
-         --accent: white;
+         --accent: #bf1021;
      }
 
      html {
@@ -120,7 +120,7 @@
          text-transform: uppercase;
          text-decoration: none;
          font-weight: 400;
-         font-size: 18px;
+         font-size: 17px;
          text-align: center;
          transition: .2s background;
          letter-spacing: 1px;
@@ -183,7 +183,7 @@
           <textarea id="poetry" autofocus></textarea>
         </div>
         <a id="download-btn" class="button" href="#" download="haiku.png">
-          <img src="download.png">
+          <img src="img/download.png">
           Download your art
         </a>
       </div>
@@ -229,13 +229,16 @@
          'koi': { src: 'koi.jpg', color: '#f1ecf2', accent: '#bf1021' },
          'plant': { src: 'plant.jpg', color: '#27562c' },
          'clock': { src: 'clock.jpg', color: '#47423c', accent: '#cbebe6' },
-         'bears': { src: 'bears.jpg', color: '#271d1c' },
+         'joy': { src: 'joy.jpg', color: '#203c52' },
+         'smile': { src: 'smile.jpg', color: '#dfcf20' },
+         'cry': { src: 'cry.jpg', color: '#efefff', accent: '#6b232e' },
          'rip': { src: 'rip.jpg', color: '#fcfaff', accent: '#583762' },
          'exit': { src: 'exit.jpg', color: '#fcfcff', accent: '#9f0213' },
          'rope': { src: 'rope.jpg', color: 'white', accent: '#725943' },
          'hand': { src: 'hand.jpg', color: '#211b25' },
+         'bears': { src: 'bears.jpg', color: '#271d1c' },
          'doge': { src: 'doge.jpg', color: '#904e14' },
-         'kitty': { src: 'kitty.jpg', color: '#79740e' },
+         // 'kitty': { src: 'kitty.jpg', color: '#79740e' },
      }
 
      setupThemeSelect()
@@ -245,7 +248,7 @@
      function setTheme(themeName) {
          const { src, color, accent } = themes[themeName] || themes['koi']
 
-         poemBgImg.src = src
+         poemBgImg.src = 'img/' + src
          context.fillStyle = color
          document.documentElement.style.setProperty('--accent', accent || color)
      }

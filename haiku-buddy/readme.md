@@ -23,6 +23,9 @@ Images from [Unsplash](https://unsplash.com) ([fish](https://unsplash.com/photos
 [exit](https://unsplash.com/photos/Jv0TBnjzYNM),
 [rope](https://unsplash.com/photos/8K6Erb8mrEc),
 [hand](https://unsplash.com/photos/PC_lbSSxCZE),
+[smile](https://unsplash.com/photos/qDbnNDF2jZ4),
+[joy](https://unsplash.com/photos/FtZL0r4DZYk),
+[cry](https://unsplash.com/photos/VIO0tyzXL4U),
 [kitty](https://unsplash.com/photos/wg6tsOBbGb0),
 [doge](https://unsplash.com/photos/HpVgq2BIjbw),
 [bears](https://unsplash.com/photos/uB9TMm7R0So))
