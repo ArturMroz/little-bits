@@ -7,7 +7,7 @@
     <meta name="keywords" content="haiku, poetry, syllables counter, fine art">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
-    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Lato:wght@400&display=swap" rel="stylesheet">
 
     <title>Haiku buddy</title>
 
@@ -27,7 +27,7 @@
      }
 
      body * {
-         font-family: 'Montserrat', 'Open Sans', sans-serif;
+         font-family: 'Lato', 'Open Sans', sans-serif;
      }
 
      .right-wrapper {
@@ -39,7 +39,7 @@
 
      .header {
          height: 70px;
-         padding: 0 0 30px 32px;
+         padding: 0 0 25px 35px;
          box-sizing: border-box;
          display: flex;
          align-items: center;
@@ -48,7 +48,8 @@
      .logo {
          flex: 1;
          text-transform: lowercase;
-         font-weight: 500;
+         letter-spacing: 1px;
+         font-weight: 400;
          font-size: 36px;
          color: #333;
 
@@ -113,12 +114,12 @@
      }
 
      .button {
-         padding: 15px 25px;
-         background: #d3d3d3;
+         padding: 18px 25px;
+         background: #ddd;
          color: #222;
          text-transform: uppercase;
          text-decoration: none;
-         font-weight: 500;
+         font-weight: 400;
          font-size: 18px;
          text-align: center;
          transition: .2s background;
@@ -128,6 +129,10 @@
      .button:hover {
          background: #aaa;
          color: #111;
+     }
+
+     .button img {
+         margin-right: 5px;
      }
 
      label {
@@ -154,7 +159,7 @@
 
      .select-div {
          position: relative;
-         margin-top: 8px;
+         margin-top: 5px;
      }
 
      .select-div::after {
@@ -177,7 +182,10 @@
           <div id="counter"></div>
           <textarea id="poetry" autofocus></textarea>
         </div>
-        <a id="download-btn" class="button" href="#" download="haiku.png">Download your art » </a>
+        <a id="download-btn" class="button" href="#" download="haiku.png">
+          <img src="download.png">
+          Download your art
+        </a>
       </div>
     </div>
 
@@ -213,8 +221,8 @@
      poetry.addEventListener('keyup', updateStateOfAffairs)
 
      const downloadButton = document.querySelector('#download-btn')
-     downloadButton.addEventListener('click', () => {
-         downloadButton.href = canvas.toDataURL('image/png')
+     downloadButton.addEventListener('click', e => {
+         e.target.href = canvas.toDataURL('image/png')
      })
 
      const themes = {

@@ -26,3 +26,5 @@ Images from [Unsplash](https://unsplash.com) ([fish](https://unsplash.com/photos
 [kitty](https://unsplash.com/photos/wg6tsOBbGb0),
 [doge](https://unsplash.com/photos/HpVgq2BIjbw),
 [bears](https://unsplash.com/photos/uB9TMm7R0So))
+
+Download icon made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
