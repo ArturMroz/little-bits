@@ -39,7 +39,7 @@
 
      .header {
          height: 70px;
-         padding: 0 0 25px 35px;
+         padding: 0 0 25px 38px;
          box-sizing: border-box;
          display: flex;
          align-items: center;
@@ -110,9 +110,9 @@
          font-size: 18px;
      }
 
-     .button {
+     #download-btn {
          padding: 18px 25px;
-         background: #ddd;
+         background: #e1e1e1;
          color: #222;
          text-transform: uppercase;
          text-decoration: none;
@@ -123,12 +123,12 @@
          letter-spacing: 1px;
      }
 
-     .button:hover {
-         background: #aaa;
+     #download-btn:hover {
+         background: #bbb;
          color: #111;
      }
 
-     .button img {
+     #download-btn img {
          margin-right: 5px;
      }
 
@@ -179,7 +179,7 @@
           <div id="counter"></div>
           <textarea id="poetry" placeholder="start crafting your haiku here and the syllables will be counted for you" autofocus></textarea>
         </div>
-        <a id="download-btn" class="button" href="#" download="haiku.png">
+        <a id="download-btn" href="#" download="haiku.png">
           <img src="img/download.png">
           Download your art
         </a>
@@ -209,16 +209,14 @@
 
      const canvas = document.querySelector('#canvas')
      const context = canvas.getContext('2d')
-     context.font = '24pt "Long Cang"'
-
-     const [x, y, yOffset] = [50, 90, 35]
      const poemBgImg = new Image()
+     const [x, y, yOffset] = [50, 90, 35]
 
      poemBgImg.onload = updateStateOfAffairs
      poetry.addEventListener('keyup', updateStateOfAffairs)
+     context.font = '24pt "Long Cang"'
 
-     const downloadButton = document.querySelector('#download-btn')
-     downloadButton.addEventListener('click', e => {
+     document.querySelector('#download-btn').addEventListener('click', e => {
          e.target.href = canvas.toDataURL('image/png')
      })
 
@@ -229,18 +227,14 @@
          'joy': { src: 'joy.jpg', color: '#203c52' },
          'smile': { src: 'smile.jpg', color: '#dfcf20' },
          'cry': { src: 'cry.jpg', color: '#efefff', accent: '#6b232e' },
+         'fml': { src: 'fml.jpg', color: '#fff', accent: '#acce91' },
          'rip': { src: 'rip.jpg', color: '#fcfaff', accent: '#583762' },
          'exit': { src: 'exit.jpg', color: '#fcfcff', accent: '#9f0213' },
          'rope': { src: 'rope.jpg', color: 'white', accent: '#725943' },
          'hand': { src: 'hand.jpg', color: '#211b25' },
          'bears': { src: 'bears.jpg', color: '#271d1c' },
          'doge': { src: 'doge.jpg', color: '#904e14' },
-         // 'kitty': { src: 'kitty.jpg', color: '#79740e' },
      }
-
-     setupThemeSelect()
-
-     setTheme()
 
      function setTheme(themeName) {
          const { src, color, accent } = themes[themeName] || themes['koi']
@@ -280,10 +274,11 @@
          const syllableRegex = /[aiouy]+e*|e(?!d\b|ly)\w|[td]ed|(le|tre)\b|\b\w{1,2}e\b/gi
          const matches = sentence.match(syllableRegex)
 
-         if (matches === null) return 0
-
-         return matches.length
+         return matches !== null ? matches.length : 0
      }
+
+     setupThemeSelect()
+     setTheme()
     </script>
   </body>
 </html>
