@@ -4,7 +4,86 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little bits</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+     body {
+         --fg-color1: #fff;
+         --fg-color2: #222;
+
+         background: #bbb;
+     }
+
+     main {
+         max-width: 1000px;
+         padding: 0 15px;
+         margin: 0 auto;
+     }
+
+     h1 {
+         padding-bottom: 0.5em;
+         border-bottom: 3px solid var(--fg-color1);
+
+         color: var(--fg-color1);
+
+         font-family: 'Libre Baskerville', serif;
+         font-style: italic;
+         font-weight: 900;
+         font-size: 4vw;
+         font-size: clamp(40px, 4.5vw, 80px);
+         letter-spacing: 0.1em;
+     }
+
+     ol {
+         padding: 0;
+         list-style: none;
+         counter-reset: no-easter-eggs-here;
+     }
+
+     ol li {
+         display: flex;
+         margin-bottom: 1.4em;
+         counter-increment: no-easter-eggs-here;
+     }
+
+     ol li::before {
+         content: "0" counter(no-easter-eggs-here) ".";
+         margin-right: 0.4em;
+         font-size: 1em;
+         font-size: clamp(14px, 1.2vw, 36px);
+         font-family: 'Libre Baskerville', serif;
+         font-style: italic;
+         line-height: 1;
+         color: var(--fg-color2);
+         transition: color .3s;
+     }
+
+     ol li:hover::before {
+         color: #dd0000;
+         /* content: "00."; */
+     }
+
+     a {
+         width: 100%;
+         font-family: 'Montserrat', sans-serif;
+         font-weight: 900;
+         font-size: 3.5vw;
+         font-size: clamp(22px, 3vw, 72px);
+         line-height: 1.5em;
+         text-transform: uppercase;
+         text-decoration: none;
+
+         color: var(--fg-color2);
+
+         transition: color .3s, padding .2s;
+     }
+
+     a:hover {
+         padding-left: 0.15em;
+         color: var(--fg-color1);
+     }
+    </style>
   </head>
   <body>
     <main>
@@ -13,7 +92,7 @@
         <li><a href="fantasy-lands">Fantasy land generator</a></li>
         <li><a href="mocking-text">Mocking text generator</a></li>
         <li><a href="haiku-buddy">Haiku buddy</a></li>
-        <li><a href="https://github.com/ArturMroz/little-bits">more things to come soon...</a></li>
+        <li><a href="https://github.com/ArturMroz/little-bits">more things coming soon...</a></li>
       </ol>
     </main>
   </body>
