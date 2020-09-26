@@ -224,10 +224,11 @@
          'koi': { src: 'koi.jpg', color: '#f1ecf2', accent: '#bf1021' },
          'plant': { src: 'plant.jpg', color: '#27562c' },
          'clock': { src: 'clock.jpg', color: '#47423c', accent: '#cbebe6' },
+         'cctv': { src: 'cctv.jpg', color: '#1e1f21' },
          'joy': { src: 'joy.jpg', color: '#203c52' },
          'smile': { src: 'smile.jpg', color: '#dfcf20' },
          'cry': { src: 'cry.jpg', color: '#efefff', accent: '#6b232e' },
-         'fml': { src: 'fml.jpg', color: '#fff', accent: '#acce91' },
+         // 'fml': { src: 'fml.jpg', color: '#fff', accent: '#acce91' },
          'rip': { src: 'rip.jpg', color: '#fcfaff', accent: '#583762' },
          'exit': { src: 'exit.jpg', color: '#fcfcff', accent: '#9f0213' },
          'rope': { src: 'rope.jpg', color: 'white', accent: '#725943' },
@@ -271,7 +272,7 @@
      }
 
      function countSyllables(sentence) {
-         const syllableRegex = /[aiouy]+e*|e(?!d\b|ly)\w|[td]ed|(le|tre)\b|\b\w{1,2}e\b/gi
+         const syllableRegex = /[aiouy]+e*|e(?!d\b|ly)\w|[td]ed|(le|tre)\b|\b\w{1,2}(e|ed)\b/gi
          const matches = sentence.match(syllableRegex)
 
          return matches !== null ? matches.length : 0
