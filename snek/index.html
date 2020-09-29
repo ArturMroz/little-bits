@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Nokia 3310 Snake Game but with a twist">
+    <title>Snek</title>
+  </head>
+  <body>
+    <canvas width="500" height="500"></canvas>
+    <script type="text/javascript">
+     const canvas = document.querySelector('canvas')
+     const ctx = canvas.getContext('2d')
+
+     const tileSize = 20
+     const xMax = canvas.width / tileSize
+     const yMax = canvas.height / tileSize
+
+     let xv = 1, yv = 0;
+     let head = { x: -1, y: 0 }
+     let food = { x: 5, y: 5 }
+
+     let snek = []
+     let snekLen = 3
+
+     setInterval(gameLoop, 100)
+
+     function gameLoop() {
+         ctx.fillStyle = '#111'
+         ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+         ctx.fillStyle = 'crimson'
+         ctx.fillRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize)
+
+         head.x += xv
+         head.y += yv
+
+         if (head.x > xMax) head.x = 0
+         if (head.y > yMax) head.y = 0
+         if (head.x < 0) head.x = xMax
+         if (head.y < 0) head.y = yMax
+
+         if (food.x === head.x && food.y === head.y) {
+             snekLen++
+             food.x = Math.floor(Math.random() * xMax);
+             food.y = Math.floor(Math.random() * yMax);
+         }
+
+         snek.push({x: head.x, y: head.y})
+         snek = snek.slice(-snekLen)
+
+         ctx.fillStyle = '#BADA55'
+         snek.forEach(({x, y}) => {
+             ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize)
+         })
+     }
+
+     document.addEventListener('keydown', e => {
+         switch (e.keyCode) {
+             case 37:
+                 xv = -1
+                 yv = 0
+                 break
+
+             case 38:
+                 xv = 0
+                 yv = 1
+                 break
+
+             case 39:
+                 xv = 1
+                 yv = 0
+                 break
+
+             case 40:
+                 xv = 0
+                 yv = -1
+                 break
+         }
+     })
+    </script>
+  </body>
+</html>
