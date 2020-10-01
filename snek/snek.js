@@ -1,3 +1,4 @@
+const scoreDisplay = document.querySelector('#score')
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
@@ -5,29 +6,41 @@ const gridSize = 20
 const xMax = Math.floor(canvas.width / gridSize)
 const yMax = Math.floor(canvas.height / gridSize)
 
-let xv = 1, yv = 0
 let head = { x: -1, y: 0 }
 let food = { x: 5, y: 5 }
-
 let snek = []
 let snekLen = 3
+let xv = 1, yv = 0
+
 let points = 0
 
-const bgColor = () => points > 1 ? '#223' : '#000'
-const foodColor = () => points > 1 ? 'crimson' : '#fff'
+const bgColor = () => points > 1 ? '#334' : '#000'
+const foodColor = () => points > 1 ? '#d33' : '#fff'
 const snekColor = () => points > 1 ? '#bada55' : '#fff'
 
-setInterval(gameLoop, 100)
+const fps = 15
+const interval = 1000 / fps
+let then = window.performance.now()
+let now, delta
 
-function gameLoop() {
+function draw() {
+    requestAnimationFrame(draw)
+
+    now = window.performance.now()
+    delta = now - then;
+
+    if (delta < interval) return
+
+    then = now - (delta % interval);
+
+    head.x += xv
+    head.y += yv
+
     ctx.fillStyle = bgColor()
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
     ctx.fillStyle = foodColor()
     ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize)
-
-    head.x += xv
-    head.y += yv
 
     if (head.x > xMax - 1) head.x = 0
     if (head.y > yMax - 1) head.y = 0
@@ -53,7 +66,11 @@ function gameLoop() {
 
     snek.push({x: head.x, y: head.y})
     snek = snek.slice(-snekLen)
+
+    scoreDisplay.textContent = points * 100
 }
+
+draw();
 
 document.onkeydown = e => {
     switch (e.keyCode) {
