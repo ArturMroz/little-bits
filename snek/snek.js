@@ -10,7 +10,7 @@ let head = { x: -1, y: 0 }
 let food = { x: 5, y: 5 }
 let snek = []
 let snekLen = 3
-let xv = 1, yv = 0
+let [xv, yv] = [1, 0]
 
 let points = 0
 
@@ -18,7 +18,7 @@ const bgColor = () => points > 1 ? '#334' : '#000'
 const foodColor = () => points > 1 ? '#d33' : '#fff'
 const snekColor = () => points > 1 ? '#bada55' : '#fff'
 
-const fps = 15
+const fps = 10
 const interval = 1000 / fps
 let then = window.performance.now()
 let now, delta
@@ -27,25 +27,27 @@ function draw() {
     requestAnimationFrame(draw)
 
     now = window.performance.now()
-    delta = now - then;
+    delta = now - then
 
     if (delta < interval) return
 
-    then = now - (delta % interval);
-
-    head.x += xv
-    head.y += yv
+    then = now - (delta % interval)
 
     ctx.fillStyle = bgColor()
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    ctx.fillStyle = foodColor()
-    ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize)
+    head.x += xv
+    head.y += yv
 
-    if (head.x > xMax - 1) head.x = 0
-    if (head.y > yMax - 1) head.y = 0
-    if (head.x < 0) head.x = xMax - 1
-    if (head.y < 0) head.y = yMax - 1
+    ;[head.x, head.y] = checkBounds(head.x, head.y)
+
+    if (points > 4
+        && xv === 0
+        && food.x === head.x
+        && Math.abs(food.y - head.y) === 2) {
+        food.x += Math.random() < 0.5 ? -1 : 1
+        food.x = checkBounds(food.x, food.y)[0]
+    }
 
     if (food.x === head.x && food.y === head.y) {
         snekLen++
@@ -53,6 +55,9 @@ function draw() {
         food.x = Math.floor(Math.random() * xMax)
         food.y = Math.floor(Math.random() * yMax)
     }
+
+    ctx.fillStyle = foodColor()
+    ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize)
 
     ctx.fillStyle = snekColor()
     snek.forEach(({x, y}) => {
@@ -72,10 +77,19 @@ function draw() {
 
 draw();
 
+function checkBounds(x, y) {
+    if (x > xMax - 1) x = 0
+    if (y > yMax - 1) y = 0
+    if (x < 0) x = xMax - 1
+    if (y < 0) y = yMax - 1
+
+    return [x, y]
+}
+
 document.onkeydown = e => {
     switch (e.keyCode) {
         case 37:
-            if (xv ===  1) return
+            if (xv ===  1) break
             xv = -1
             yv = 0
             break
