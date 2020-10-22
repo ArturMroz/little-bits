@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Final Countdown</title>
+    <meta name="description" content="Countdown to misery/freedom. Depends on whom you ask.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&text=0123456789:&display=swap" rel="stylesheet">
+
+    <style>
+     html, body {
+         height: 100%;
+         margin: 0;
+     }
+
+     body {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background: radial-gradient(#333 0%, #000 100%);
+     }
+
+     #sad-display {
+         margin: 0;
+         color: #eee;
+         font-family: 'Roboto Mono', monospace;
+         font-size: 10vw;
+     }
+    </style>
+  </head>
+  <body>
+    <p id="sad-display"></p>
+
+    <script>
+     const sadDisplay   = document.getElementById('sad-display')
+     const judgementDay = new Date('2020/11/21 17:00:00').getTime()
+     const cry          = (x) => x > 9 ? x : '0' + x
+     const despair      = setInterval(weAreDoomed, 1000)
+
+     function weAreDoomed() {
+         const joyLeft = judgementDay - Date.now()
+
+         if (joyLeft > 0) {
+             const everyone = Math.floor(joyLeft / (1000 * 60 * 60 * 24))
+             const iKnow    = Math.floor((joyLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+             const goesAway = Math.floor((joyLeft % (1000 * 60 * 60)) / (1000 * 60))
+             const inTheEnd = Math.floor((joyLeft % (1000 * 60)) / 1000)
+
+             sadDisplay.innerHTML = `${everyone}:${cry(iKnow)}:${cry(goesAway)}:${cry(inTheEnd)}`
+         } else {
+             sadDisplay.innerHTML = 'SAD TIMES ;('
+             clearInterval(despair)
+         }
+     }
+
+     weAreDoomed()
+
+    </script>
+  </body>
+</html>
