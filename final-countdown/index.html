@@ -6,6 +6,7 @@
     <meta name="description" content="Countdown to misery/freedom. Depends on whom you ask.">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&text=0123456789:&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
 
     <style>
      html, body {
@@ -33,9 +34,9 @@
 
     <script>
      const sadDisplay   = document.getElementById('sad-display')
-     const judgementDay = new Date('2020/11/21 17:00:00').getTime()
-     const cry          = (x) => x > 9 ? x : '0' + x
+     const judgementDay = new Date('2020/11/20 17:00:00').getTime()
      const despair      = setInterval(weAreDoomed, 1000)
+     const cry          = (x) => x > 9 ? x : '0' + x
 
      function weAreDoomed() {
          const joyLeft = judgementDay - Date.now()
@@ -55,6 +56,18 @@
 
      weAreDoomed()
 
+     // well-hidden easter egg
+     const pressed = []
+     const secret = 'kdogg'
+
+     window.onkeyup = (e) => {
+         pressed.push(e.key)
+         pressed.splice(-secret.length - 1, pressed.length - secret.length)
+
+         if (pressed.join('').includes(secret)) {
+             cornify_add()
+         }
+     }
     </script>
   </body>
 </html>
